@@ -16,6 +16,21 @@ class MainWindow(QMainWindow):
         self.map_l = 'map'
         self.delta = 0.1
         self.refresh_map()
+        self.pushButton_3.clicked.connect(self.set_hybrid)
+        self.pushButton_2.clicked.connect(self.set_satellite)
+        self.pushButton.clicked.connect(self.set_map)
+
+    def set_map(self):
+        self.map_l = 'map'
+        self.refresh_map()
+
+    def set_hybrid(self):
+        self.map_l = 'sat,skl'
+        self.refresh_map()
+
+    def set_satellite(self):
+        self.map_l = 'sat'
+        self.refresh_map()
 
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_PageUp and self.map_zoom < 17:
