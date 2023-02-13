@@ -19,6 +19,7 @@ class MainWindow(QMainWindow):
         self.pushButton_3.clicked.connect(self.set_hybrid)
         self.pushButton_2.clicked.connect(self.set_satellite)
         self.pushButton.clicked.connect(self.set_map)
+        self.pushButton_4.clicked.connect(self.search)
 
     def set_map(self):
         self.map_l = 'map'
@@ -30,6 +31,11 @@ class MainWindow(QMainWindow):
 
     def set_satellite(self):
         self.map_l = 'sat'
+        self.refresh_map()
+
+    def search(self):
+        lat, long = get_coordinates(self.lineEdit.text())
+        self.map_ll = [long, lat]
         self.refresh_map()
 
     def keyPressEvent(self, event):
